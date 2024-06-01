@@ -94,8 +94,18 @@ services:
           ### grafana nodejs dashboard : https://grafana.com/grafana/dashboards/11159-nodejs-application-dashboard/
           copy id from website ; you'll see it in homepage: 11159
           navigate to your grafana running server and import (selected id: 11159)
+
+####                  Log Collection : (Grafana Loki)
+  - we'll push all console.log() in CMS(central monitoring system : i.e grafana loki) and pull grafana loki from grafana
+  - to work with this run services: grafana loki
+    - 3. Setup Loki Server  : docker run -d --name=loki -p 3100:3100 grafana/loki
+    - using winston-loki npm package to push
+      - npm i winston-loki winston
 ### Steps
   - 1. Nodejs and express server setup with basics functionality
   - 2. docker setup and prometheus setup for prometheus Server
-  - 3. 
 
+### Overview
+  - prometheus: for metrics collection
+  - grafana   : for visualization
+  - loki      : for log collection
