@@ -109,3 +109,5 @@ services:
   - prometheus: for metrics collection
   - grafana   : for visualization
   - loki      : for log collection
+
+#### ----------------- Thank You -------------------
