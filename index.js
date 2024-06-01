@@ -26,8 +26,16 @@ const reqResTime = new client.Histogram({
   buckets: [1,50,100,200,400,500,800,1000,2000], // data points
 });
 
+// total req counter
+const totalReqCounter = new client.Counter({
+  name: 'total_req',
+  help: 'Tells total req'
+});
+
 // create middleware and make use of package: npm i response-time
 app.use(responseTime((req, res, time) => {
+// on every req we increase totalReqCounter
+    totalReqCounter.inc()
     reqResTime.labels({
     method: req.method, 
     route: req.url,
